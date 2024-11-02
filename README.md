@@ -87,6 +87,11 @@ You want to set up this once and forget. It should start automatically everytime
 sudo -i $(which python) $(pwd)/app.py enable
 ```
 
+### Adding support for your device
+Thank your for reading until here. I'm sorry that I can support for your device, but I only have 1 device, so you know. Anyone have some Python coding skill, you're more than welcome to fix the code and support new devices. The code is actually very simple. You'll find everything you need in two functions `monitoring()` and `ping()`. Check for more details document in **cython-hidapi** [document](https://trezor.github.io/cython-hidapi/index.html).
+
+This tool use Typer for command-line interface. Check Typer's document [here](https://typer.tiangolo.com/tutorial/commands/). 
+
 ### Troubleshooting issues
 Currently, I don't have any issue with this tool, so I cannot give you advices. But I foreseen some potentials issues. You're welcome to report issue on this repository.
 
