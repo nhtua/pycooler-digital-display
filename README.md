@@ -6,6 +6,21 @@ Don't scare of the "command-line" part. I'll walk you through very few steps to 
 
 If you are using Windows, you should go to manufacture's website to find device's driver.
 
+**Table of Contents**
+
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Find your Cooler's device_path](#find-your-coolers-device_path)
+* [How to run with sudo permission](#how-to-run-with-sudo-permission)
+* [Start PyCooler Digital Display automatically](#start-pycooler-digital-display-automatically)
+* [Adding support for your device](#adding-support-for-your-device)
+* [Troubleshooting issues](#troubleshooting-issues)
+
+
+### Requirements
+1. You using Linux which has Python 3.10 or newer.
+2. Your digital display is plugged into a USB interface. It could be USB A, USB C, mini USB, micro USB or USB header on the motherboard.
+
 ### Installation
 
 (*Given commands here are in Ubuntu, other Linux distributions should have similar package managers. Google to find equivalent commands in your system.*)
@@ -86,7 +101,7 @@ Congrats! YOU DID IT.
 
 `/dev/hidraw0` is the `device_path` you found using `list` command.
 
-### Make PyCooler Digital Display starts automatically
+### Start PyCooler Digital Display automatically
 You want to set up this once and forget. It should start automatically everytime you turn on the PC.
 
 ```shell
