@@ -48,13 +48,14 @@ def test(device_path: str):
 
 
 @app.command()
-def monitoring(device_path: str, update_interval:str=1):
+def monitoring(device_path: str, update_interval:int=1):
     device = hid.device()
     try:
         print(f"Connecting to {device_path}")
         device.open_path(device_path.encode('utf-8'))
     except Exception as e:
-        print('Cannot open connection to the device. Check device_path or user permission. Suggest to run with sudo or root user')
+        rprint("[bold red]⚠️ Cannot open connection to the device.[/bold red]")
+        rprint("Check [blue]device_path[/blue] or user permission. Suggest to run with [blue]sudo[/blue] or [blue]root[/blue] user.")
         print(f"Error: {type(e).__name__}")
         print(f"Message: {str(e)}")
         return
@@ -93,6 +94,7 @@ def get_cpu_temperature():
         if name == 'coretemp':
             cpu_temp = entries[0].current
     return int(cpu_temp)
+
 
 if  __name__=="__main__":
     app()
