@@ -2,7 +2,7 @@
 
 **PyCooler Digital Display** is a command-line tool that helps you deal with any digital display which does not have a driver on Linux system. Especially built-in digital display on CPU Cooler Tower or Water-cooler AIO. 
 
-Don't scare of the "command-line" part. I'll walk you through very few steps to install this tools, deploy it and forget about it.
+Don't scare of the "command-line" part. I'll walk you through very few steps to install this tools, deploy it and forget about it. The project is aiming to help everyone using Linux, which includes beginer, amateur or beyond. So the instruction looks a bit lengthy, but it is worth to explain every details so you don't need to go anywhere to find the answer.
 
 If you are using Windows, you should go to manufacture's website to find device's driver.
 
@@ -68,8 +68,9 @@ sudo -i $(which python) $(pwd)/app.py COMMAND args --options
 ```shell
 sudo -i $(which python) $(pwd)/app.py monitoring /dev/hidraw0 --update-interval 3
 ```
-Check your cooler digital display to see if it shows temperature.
+Now, check your cooler digital display to see if it shows temperature.
 
+Congrats! YOU DID IT.
 
 **Explain command components**
 
@@ -77,8 +78,13 @@ Check your cooler digital display to see if it shows temperature.
 
 `$(which python)` return the path to excutable `python` in your current user
 
-`app.py xxx yyy zzz` are our Cooler Display program.
+`$(pwd)` gives the full path to this application's code repository.
 
+`app.py` are our Cooler Display program.
+
+`monitoring` is the command. There are a few of them: list, test, monitoring, (`enable` command is work-in-progress)
+
+`/dev/hidraw0` is the `device_path` you found using `list` command.
 
 ### Make PyCooler Digital Display starts automatically
 You want to set up this once and forget. It should start automatically everytime you turn on the PC.
