@@ -2,13 +2,30 @@ import time
 import typer
 import hid
 import psutil
+from enum import Enum
+from rich import print as rprint
+from typing_extensions import Annotated
 
 app = typer.Typer()
 
+class DeviceListFormat(str, Enum):
+    flat= "flat"
+    raw= "raw"
+
 @app.command()
-def list():
-    for device_dict in hid.enumerate():
-        print(device_dict)
+def list(format: Annotated[DeviceListFormat, typer.Option("--format", "-f")] = DeviceListFormat.flat):
+    if format == DeviceListFormat.flat:
+        for device_dict in hid.enumerate():
+            name = device_dict['path'].decode("utf-8")
+            rprint(f"🔌 [bold blue] {name} [/bold blue]")
+            for k,v in device_dict.items():
+                rprint("  ", k, ": ", v)
+            print("\n")
+
+    if format == DeviceListFormat.raw:
+        for device_dict in hid.enumerate():
+            print(device_dict)
+            print("\n")
 
 @app.command()
 def test(device_path: str):
