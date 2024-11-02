@@ -18,17 +18,26 @@ If you are using Windows, you should go to manufacture's website to find device'
 
 
 ### Requirements
-1. You using Linux which has Python 3.10 or newer.
+1. You using Linux which has Python 3.10 or newer. Normally, Python is a default and pre-installed on Linux.
 2. Your digital display is plugged into a USB interface. It could be USB A, USB C, mini USB, micro USB or USB header on the motherboard.
 
 ### Installation
 
 (*Given commands here are in Ubuntu, other Linux distributions should have similar package managers. Google to find equivalent commands in your system.*)
+1. Download code to your PC. Click the Releases link on the right panel of this page, download the zip file.
 
-1. Make sure your system has Python 3.10 or newer. Normally Python is a default on Linux system.
+2. Locate the downloaded file. I suppose it is in your home directory `$HOME/Download`
+```
+cd ~/Download
+# you may want to move it to another directory
 
-2. Install required libraries
+unzip pycooler-digital-display-1.0.1.zip
+cd pycooler-digital-display-1.0.1
+```
+
+3. Install required libraries
 ```shell
+
 python -m pip install -r requirements.txt
 ```
 
@@ -37,7 +46,7 @@ python -m pip install -r requirements.txt
 sudo apt install python-pip
 ```
 
-3. Test the installation
+4. Test the installation
 ```shell
 python app.py list
 ```
@@ -107,6 +116,7 @@ You want to set up this once and forget. It should start automatically everytime
 ```shell
 sudo -i $(which python) $(pwd)/app.py enable
 ```
+(this feature is working-in-progress. Please manually enable the service follow commands in [Troubleshooting issues/3.](#troubleshooting-issues))
 
 ### Adding support for your device
 Thank your for reading until here. I'm sorry that I can not support for your device, but I only have 1 device, so you know. Anyone have some Python coding skill is more than welcome to fix the code and support new devices. The code is actually very simple. You'll find everything you need in two functions `monitoring()` and `ping()`. Check for more details document in **cython-hidapi** [document](https://trezor.github.io/cython-hidapi/index.html).
