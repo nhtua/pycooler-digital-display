@@ -2,7 +2,7 @@
 
 **PyCooler Digital Display** is a command-line tool that helps you deal with any digital display which does not have a driver on Linux system. Especially built-in digital display on CPU Cooler Tower or Water-cooler AIO. 
 
-Don't scare of the "command-line" part. I'll walk you through very few steps to install this tools, deploy it and forget about it. The project is aiming to help everyone using Linux, which includes beginer, amateur or beyond. So the instruction looks a bit lengthy, but it is worth to explain every details so you don't need to go anywhere to find the answer.
+Don't scare of the "command-line" part. I'll walk you through very few steps to install this tool, deploy it and forget about it. The project is aiming to help everyone using Linux, which includes beginer, amateur or beyond. So the instruction looks a bit lengthy, but it is worth to explain every details so you don't need to go anywhere to find the answer.
 
 If you are using Windows, you should go to manufacture's website to find device's driver.
 
@@ -94,7 +94,7 @@ sudo -i $(which python) $(pwd)/app.py enable
 ```
 
 ### Adding support for your device
-Thank your for reading until here. I'm sorry that I can support for your device, but I only have 1 device, so you know. Anyone have some Python coding skill, you're more than welcome to fix the code and support new devices. The code is actually very simple. You'll find everything you need in two functions `monitoring()` and `ping()`. Check for more details document in **cython-hidapi** [document](https://trezor.github.io/cython-hidapi/index.html).
+Thank your for reading until here. I'm sorry that I can not support for your device, but I only have 1 device, so you know. Anyone have some Python coding skill is more than welcome to fix the code and support new devices. The code is actually very simple. You'll find everything you need in two functions `monitoring()` and `ping()`. Check for more details document in **cython-hidapi** [document](https://trezor.github.io/cython-hidapi/index.html).
 
 This tool use Typer for command-line interface. Check Typer's document [here](https://typer.tiangolo.com/tutorial/commands/). 
 
