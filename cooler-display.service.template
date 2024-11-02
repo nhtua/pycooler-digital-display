@@ -1,0 +1,12 @@
+[Unit]
+Description=Cooler Display Service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/liam/Dev/github.com/nhtua/py-cooler-display
+ExecStart=/home/liam/.pyenv/shims/poetry run python app.py monitoring /dev/hidraw0
+WorkingDirectory=/home/liam/Dev/github.com/nhtua/py-cooler-display
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
