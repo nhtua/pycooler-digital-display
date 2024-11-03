@@ -117,8 +117,8 @@ sudo -i $(which python) app.py enable /your/device_path
 ```
 
 ### List of supporting devices
-1.✅Cooler tower GamerX Z1300
-2.❔Cooler tower DeepCool AK620/AK500/AK500S/AK400 Digital (need to verify)
+1. ✅Cooler tower GamerX Z1300
+2. ❔Cooler tower DeepCool AK620/AK500/AK500S/AK400 Digital (need to verify)
 
 ### Adding support for your device
 Thank your for reading until here. I'm sorry that I can not support for your device, but I only have 1 device, so you know. Anyone have some Python coding skill is more than welcome to fix the code and support new devices. The code is actually very simple. You'll find everything you need in two functions `monitoring()` and `ping()`. Check for more details document in **cython-hidapi** [document](https://trezor.github.io/cython-hidapi/index.html).
