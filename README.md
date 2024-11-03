@@ -13,6 +13,7 @@ If you are using Windows, you should go to manufacture's website to find device'
 * [Find your Cooler's device_path](#find-your-coolers-device_path)
 * [How to run with sudo permission](#how-to-run-with-sudo-permission)
 * [Start PyCooler Digital Display automatically](#start-pycooler-digital-display-automatically)
+* [List of supporting devices](#list-of-supporting-devices)
 * [Adding support for your device](#adding-support-for-your-device)
 * [Troubleshooting issues](#troubleshooting-issues)
 
@@ -84,13 +85,13 @@ Usually due to security reason, python code cannot modify a device that has not 
 Especially in our case, you don't need to mount a Cooler to file system :D. So you would have to run python script with `sudo`. You don't need to follow steps bellow if you're a root user.
 
 ```shell
-sudo -i $(which python) $(pwd)/app.py COMMAND args --options
+sudo -i $(which python) app.py COMMAND args --options
 ```
 
 **Example**
 
 ```shell
-sudo -i $(which python) $(pwd)/app.py monitoring /dev/hidraw0 --update-interval 3
+sudo -i $(which python) app.py monitoring /dev/hidraw0 --update-interval 3
 ```
 Now, check your cooler digital display to see if it shows temperature.
 
@@ -102,11 +103,9 @@ Congrats! YOU DID IT.
 
 `$(which python)` return the path to excutable `python` in your current user
 
-`$(pwd)` gives the full path to this application's code repository.
-
 `app.py` are our Cooler Display program.
 
-`monitoring` is the command. There are a few of them: list, test, monitoring, (`enable` command is work-in-progress)
+`monitoring` is the command. There are a few of them: list, test, monitoring, enable, disable
 
 `/dev/hidraw0` is the `device_path` you found using `list` command.
 
@@ -114,9 +113,12 @@ Congrats! YOU DID IT.
 You want to set up this once and forget. It should start automatically everytime you turn on the PC.
 
 ```shell
-sudo -i $(which python) $(pwd)/app.py enable
+sudo -i $(which python) app.py enable /your/device_path
 ```
-(this feature is working-in-progress. Please manually enable the service follow commands in [Troubleshooting issues/3.](#troubleshooting-issues))
+
+### List of supporting devices
+1.✅Cooler tower GamerX Z1300
+2.❔Cooler tower DeepCool AK620/AK500/AK500S/AK400 Digital (need to verify)
 
 ### Adding support for your device
 Thank your for reading until here. I'm sorry that I can not support for your device, but I only have 1 device, so you know. Anyone have some Python coding skill is more than welcome to fix the code and support new devices. The code is actually very simple. You'll find everything you need in two functions `monitoring()` and `ping()`. Check for more details document in **cython-hidapi** [document](https://trezor.github.io/cython-hidapi/index.html).

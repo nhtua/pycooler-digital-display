@@ -3,9 +3,8 @@ Description=Cooler Display Service
 
 [Service]
 Type=simple
-WorkingDirectory=/home/liam/Dev/github.com/nhtua/py-cooler-display
-ExecStart=/home/liam/.pyenv/shims/poetry run python app.py monitoring /dev/hidraw0
-WorkingDirectory=/home/liam/Dev/github.com/nhtua/py-cooler-display
+ExecStart={python_path} app.py monitoring {device_path}
+WorkingDirectory={working_directory}
 Restart=on-failure
 
 [Install]

@@ -1,3 +1,5 @@
+import os
+import sys
 import time
 import typer
 import hid
@@ -69,6 +71,47 @@ def monitoring(device_path: str, update_interval:int=1):
         time.sleep(int(update_interval))
     print("Closing device")
     device.close()
+
+
+@app.command()
+def enable(device_path: str, targeted_systemd_path: str = '/etc/systemd/system'):
+    with open('cooler-display.service.template', 'r') as f:
+        tmpl = f.read()
+
+    service_definition = tmpl.format(
+        python_path=sys.executable,
+        device_path=device_path,
+        working_directory=os.getcwd()
+    )
+
+    target = f"{targeted_systemd_path}/cooler-display.service"
+    with open(target, "w") as output:
+        output.write(service_definition)
+
+    os.chown(target, 0, 0)  # as root:root
+    os.chmod(target, 0o644)
+
+    import subprocess
+    try:
+        subprocess.run('systemctl daemon-reload', shell=True)
+        subprocess.run('systemctl enable cooler-display', shell=True)
+        subprocess.run('systemctl start cooler-display', shell=True)
+    except Exception as e:
+        rprint('[bold red]Cannot load Cooler Display service into SystemD[/bold red]')
+        print(f"Error: {type(e).__name__}")
+        print(f"Message: {str(e)})")
+
+@app.command()
+def disable(targeted_systemd_path: str = '/etc/systemd/system'):
+    import subprocess
+    try:
+        subprocess.run('systemctl stop cooler-display', shell=True)
+        subprocess.run('systemctl disable cooler-display', shell=True)
+        subprocess.run(f"rm {targeted_systemd_path}/cooler-display.service", shell=True)
+    except Exception as e:
+        rprint('[bold red]Cannot remove Cooler Display service into SystemD[/bold red]')
+        print(f"Error: {type(e).__name__}")
+        print(f"Message: {str(e)})")
 
 
 def ping(device, data=[]):
