@@ -155,8 +155,5 @@ sudo chmod +x app.py
 sudo systemctl daemon-reload
 sudo systemctl enable cooler-display
 sudo systemctl start cooler-display
-
 ```
-
-4. << to be added >>
 
