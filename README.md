@@ -19,7 +19,7 @@ If you are using Windows, you should go to manufacture's website to find device'
 
 
 ### Requirements
-1. You using Linux which has Python 3.10 or newer. Normally, Python is a default and pre-installed on Linux.
+1. You are using Linux which has Python 3.10 or newer. Normally, Python is a default and pre-installed on Linux.
 2. Your digital display is plugged into a USB interface. It could be USB A, USB C, mini USB, micro USB or USB header on the motherboard.
 
 ### Installation
@@ -27,9 +27,9 @@ If you are using Windows, you should go to manufacture's website to find device'
 (*Given commands here are in Ubuntu, other Linux distributions should have similar package managers. Google to find equivalent commands in your system.*)
 1. Download code to your PC. Click the Releases link on the right panel of this page, download the zip file.
 
-2. Locate the downloaded file. I suppose it is in your home directory `$HOME/Download`
+2. Locate the downloaded file. I suppose it is in your home directory `$HOME/Downloads`
 ```
-cd ~/Download
+cd ~/Downloads
 # you may want to move it to another directory
 
 unzip pycooler-digital-display-1.0.1.zip
@@ -82,7 +82,7 @@ But I know it is the cooler using the deductive reasoning method, as other devic
 
 ### How to run with `sudo` permission
 Usually due to security reason, python code cannot modify a device that has not mounted properly (mount in the file system, not "mount" to the motherboard). You can still see the device path is `/dev/*`, is not something like `/mnt/*`.  
-Especially in our case, you don't need to mount a Cooler to file system :D. So you would have to run python script with `sudo`. You don't need to follow steps bellow if you're a root user.
+Especially in our case, you don't need to mount a Cooler to file system :D. So you would have to run python script with `sudo`. You don't need `sudo -i` if you're a root user.
 
 ```shell
 sudo -i $(which python) app.py COMMAND args --options
@@ -117,16 +117,16 @@ sudo -i $(which python) app.py enable /your/device_path
 ```
 
 ### List of supporting devices
-1. ✅Cooler tower GamerX Z1300
+1. ✅Cooler tower Power Train X-Gamerx Z1300
 2. ❔Cooler tower DeepCool AK620/AK500/AK500S/AK400 Digital (need to verify)
 
 ### Adding support for your device
-Thank your for reading until here. I'm sorry that I can not support for your device, but I only have 1 device, so you know. Anyone have some Python coding skill is more than welcome to fix the code and support new devices. The code is actually very simple. You'll find everything you need in two functions `monitoring()` and `ping()`. Check for more details document in **cython-hidapi** [document](https://trezor.github.io/cython-hidapi/index.html).
+Thank your for reading until here. I'm sorry that I can not support for your device, but I only have 1 device, so you know. Anyone have some Python coding skill is more than welcome to fix the code and support new devices. The code is actually very simple. You'll find everything you need in two functions `monitoring()` and `ping()`. Check for more details in **cython-hidapi** [document](https://trezor.github.io/cython-hidapi/index.html) for communicate with USB device.
 
-This tool use Typer for command-line interface. Check Typer's document [here](https://typer.tiangolo.com/tutorial/commands/). 
+PyCooler uses Typer for command-line interface. Check Typer's document [here](https://typer.tiangolo.com/tutorial/commands/). 
 
 ### Troubleshooting issues
-Currently, I don't have any issue with this tool, so I cannot give you advices. But I foreseen some potentials issues. You're welcome to report issue on this repository.
+Currently, I don't have any issue with this tool. But I foreseen some potential issues. You're welcome to report issue on this repository.
 
 1. **`hidapi` not found.** 
 
@@ -139,7 +139,7 @@ sudo apt install libhidapi-dev libhidapi
 
 PyCooler Digital Display expects very simple digital display controller device that plugged in via USB interface. The the command `app.py monitoring` would send the temperature in a bytes array which is `[1, 47]`. **1** is the command to update value in the digital display controller. and **47** is the temperature it draws from Linux. So if your digital display has complicated combination of code, probably it won't work.
 
-Please submit an Issue, and hope that someone has the same device will help you fix the code.
+Please submit an Issue, someone has the same device will help you fix the code.
 
 3. Service does not start automatically. Here are some useful commands to debug
 
